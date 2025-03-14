@@ -1,0 +1,165 @@
+:root{
+  --lighter-grey : #ebebeb;
+   --light-grey : #757575;
+   --dark-grey : #1a191c;
+}
+
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding :0
+}
+
+body, html{
+  position: relative;
+  height: 100%;
+  width : 100%;
+  background-color: #fcfcfc;
+  font-family: Lato , sans-serif ;
+  overflow-y: scroll;
+  overflow-x:hidden;
+}
+
+.main{
+   padding: 2em;
+   z-index:99;
+   width : 100%;
+}
+
+.bg{
+  position: absolute;
+  right:-10em;
+  top:-10em;
+  opacity:.08;
+  transform: rotate(45deg);  
+  height: 40em;
+  width : 40em;
+}
+
+
+.main-header{
+  display: flex;
+  padding-left: 5em;
+  flex-direction: column;
+  gap:14px;
+  margin-top:3em;
+}
+
+.main-header-title{
+  color: var(--dark-grey);
+}
+.main-header-p{
+  color: var(--light-grey);
+  font-weight: lighter;
+}
+
+.main-header-search_bar{
+  display: flex;
+  align-items: center;
+  gap:.6em;
+  background-color:var(--lighter-grey);
+  border-radius: 26px;
+  width : fit-content;
+  padding: 9px;
+  
+}
+
+#search-bar{
+ border : none;
+ font-size : 1em;
+ background-color:var(--lighter-grey);
+}
+
+svg{
+  width:14px;
+
+}
+
+.main-content{
+  display : grid ;
+  position:relative;
+  grid-template-columns : 1fr 40%;
+
+}
+
+.main-content-pokelist{
+  display : flex ;
+  flex-wrap : wrap;
+  gap:4em;
+  padding: 5em;
+
+}
+
+.loader {
+  width: 100%;
+  height:100%;
+  display:flex;
+  flex-direction: column;
+  gap: 5px:
+  justify-content: center;
+  align-items : center;
+  object-fit: fit;
+  }
+
+.pokeball {
+    width: 10em;
+    height: 10em;
+    object-fit: fill;
+  }
+
+.main-content-card{
+  position:relative;
+  width: 12em;
+  height: 12em;
+  display :flex;
+  justify-content:center;
+  flex-direction:column;
+  flex-wrap: nowrap;
+  align-items:center;
+  border-radius: 30px;
+  gap: 20px;
+  padding-top: 1em;
+  cursor:pointer;
+}
+
+.main-content-card:hover{
+  width: 12.5em;
+  height: 12.5em;
+  transition: ease-in-out 0.3s
+}
+
+.main-content-card_image{
+  max-width: 5em;
+}
+
+.main-content-card_id {
+ position:absolute;
+ top:1em;
+ left:1em;
+}
+
+.main-content-card_type{
+  position:absolute;
+  top:1em;
+  right:1em;
+}
+
+.main-content-card_id_content ,.main-content-card_type_content{
+  padding: 2px 6px ;
+  border-radius: 5px;
+  font-size:.7em;
+  font-weight:bold;
+}
+
+.main-content-details{
+  height: 90%;
+  position:fixed;
+  width: 40%;
+  right:2em;
+  bottom: 1em;
+  z-index:99;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0px 30px 20px #f7f7f7;
+}
