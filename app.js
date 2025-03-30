@@ -173,11 +173,11 @@ const showCardDetails = async (itemId) => {
       </div>
 
       <div class="main-content-details_weight">
-        <p>${data.weight / 10} kg</p> <!-- Convertir le poids en kg -->
+        <p>${data.weight / 10} kg</p>
       </div>
 
       <div class="main-content-details_height">
-        <p>${data.height / 10} m</p> <!-- Convertir la hauteur en mètres -->
+        <p>${data.height / 10} m</p>
       </div>
 
       <div class="main-content-details_ability">
@@ -188,7 +188,6 @@ const showCardDetails = async (itemId) => {
     console.error(e.message);
   }
 }
-
 
 
 window.addEventListener("DOMContentLoaded" ,()=>{
