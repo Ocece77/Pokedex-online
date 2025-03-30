@@ -113,41 +113,83 @@ const handleFiltered = () =>{
   
 }
 
-const showCardDetails = (itemId) =>{
-  const currPokemon = defaultPokeList.filter((item) => item.id == itemId)[0]
-  cardDetails.innerHTML = `
-              <div class="main-content-details_id">
-                 <p>#101</p>
-              </div>
+// const showCardDetails = (itemId) =>{
+//   const currPokemon = defaultPokeList.filter((item) => item.id == itemId)[0]
+//   cardDetails.innerHTML = `
+//               <div class="main-content-details_id">
+//                  <p>#101</p>
+//               </div>
   
-              <div class="main-content-details_img">
-                <img src="" alt="">
-              </div>
+//               <div class="main-content-details_img">
+//                 <img src="" alt="">
+//               </div>
   
-              <div class="main-content-details_title">
-                <h1>Mewto</h1>
-              </div>
+//               <div class="main-content-details_title">
+//                 <h1>Mewto</h1>
+//               </div>
   
-              <div class="main-content-details_type">
-                <p>Fire</p>
-              </div>
+//               <div class="main-content-details_type">
+//                 <p>Fire</p>
+//               </div>
   
-              <div class="main-content-details_weight">
-                <p>30kg</p>
-              </div>
+//               <div class="main-content-details_weight">
+//                 <p>30kg</p>
+//               </div>
   
-              <div class="main-content-details_height">
-                <p>1m23</p>
-              </div>
+//               <div class="main-content-details_height">
+//                 <p>1m23</p>
+//               </div>
               
-              <div class="main-content-details_ability">
-                <p>friend-guard</p>
-              </div>
-  `
+//               <div class="main-content-details_ability">
+//                 <p>friend-guard</p>
+//               </div>
+//   `
 
 
   
+// }
+
+const showCardDetails = async (itemId) => {
+  const url = `https://pokeapi.co/api/v2/pokemon/${itemId}/`;
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+
+    cardDetails.innerHTML = `
+      <div class="main-content-details_id">
+        <p>#${data.id}</p>
+      </div>
+
+      <div class="main-content-details_img">
+        <img src="${data.sprites.other.showdown["front_default"]}" alt="${data.name}">
+      </div>
+
+      <div class="main-content-details_title">
+        <h1>${data.name.charAt(0).toUpperCase() + data.name.slice(1)}</h1>
+      </div>
+
+      <div class="main-content-details_type">
+        <p>${data.types.map(type => type.type.name).join(', ')}</p>
+      </div>
+
+      <div class="main-content-details_weight">
+        <p>${data.weight / 10} kg</p> <!-- Convertir le poids en kg -->
+      </div>
+
+      <div class="main-content-details_height">
+        <p>${data.height / 10} m</p> <!-- Convertir la hauteur en mètres -->
+      </div>
+
+      <div class="main-content-details_ability">
+        <p>${data.abilities.map(ability => ability.ability.name).join(', ')}</p>
+      </div>
+    `;
+  } catch (e) {
+    console.error(e.message);
+  }
 }
+
+
 
 window.addEventListener("DOMContentLoaded" ,()=>{
   fetchPokemon()
