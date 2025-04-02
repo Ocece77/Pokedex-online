@@ -126,7 +126,8 @@ svg{
 .main-content-card:hover{
   width: 12.5em;
   height: 12.5em;
-  transition: ease-in-out 0.3s
+  transform: scale(1);
+  transition: ease-in-out 0.3s;
 }
 
 .main-content-card_image{
@@ -162,4 +163,46 @@ svg{
   border-radius: 20px;
   background-color: white;
   box-shadow: 0px 30px 20px #f7f7f7;
+}
+
+.main-content-details_id{
+  text-align: center;
+}
+
+.main-content-details_img {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.main-content-details_img img {
+  width: 80px;
+  height: auto; 
+}
+
+.main-content-details_title {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.main-content-details_type{
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.main-content-details_weight,
+.main-content-details_height,
+.main-content-details_ability{
+  display: flex;
+  font-size: bold;
+  padding: 10px;
+}
+
+.main-content-details_info{
+  display: flex;
+  column-gap: 50px;
+  column-count: 3;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 10px;
 }

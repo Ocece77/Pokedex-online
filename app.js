@@ -105,12 +105,12 @@ const handleFiltered = () =>{
     let currVal = e.target.value;
     currPokeList = []
 
-    // Vérifie si currVal est un nombre
+    // Checks if currVal is a number
     if (!isNaN(currVal)) {
-      // Filtre la liste par numéro de Pokémon
+    // Filter list by Pokémon number
       currPokeList = defaultPokeList.filter((item) => item["id"].toString().includes(currVal));
     } else {
-      // Filtre la liste par nom si currVal n'est pas un nombre
+    // Filters list by name if currVal is not a number
       currPokeList = defaultPokeList.filter((item) => item["name"].includes(currVal));
     }
 
@@ -127,7 +127,7 @@ const showCardDetails = async (itemId) => {
 
     cardDetails.innerHTML = `
       <div class="main-content-details_id">
-        <p>#${data.id}</p>
+        <p>N°${data.id}</p>
       </div>
 
       <div class="main-content-details_img">
@@ -142,17 +142,21 @@ const showCardDetails = async (itemId) => {
         <p>${data.types.map(type => type.type.name).join(', ')}</p>
       </div>
 
+    <div class="main-content-details_info">
+
       <div class="main-content-details_weight">
-        <p>${data.weight / 10} kg</p>
+        <p>Weight<br>${data.weight / 10} kg</p>
       </div>
 
       <div class="main-content-details_height">
-        <p>${data.height / 10} m</p>
+        <p>Height<br>${data.height / 10} m</p>
       </div>
 
       <div class="main-content-details_ability">
-        <p>${data.abilities.map(ability => ability.ability.name).join(', ')}</p>
+        <p>Ability<br>${data.abilities.map(ability => ability.ability.name).join(', ')}</p>
       </div>
+
+    </div>
     `;
   } catch (e) {
     console.error(e.message);
