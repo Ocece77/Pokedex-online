@@ -104,50 +104,20 @@ const handleFiltered = () =>{
   searchBar.addEventListener("keyup" , (e)=>{
     let currVal = e.target.value;
     currPokeList = []
-    if (currPokeList) {
 
-          currPokeList = defaultPokeList.filter((item) => item["name"].includes(currVal))
+    // Vérifie si currVal est un nombre
+    if (!isNaN(currVal)) {
+      // Filtre la liste par numéro de Pokémon
+      currPokeList = defaultPokeList.filter((item) => item["id"].toString().includes(currVal));
+    } else {
+      // Filtre la liste par nom si currVal n'est pas un nombre
+      currPokeList = defaultPokeList.filter((item) => item["name"].includes(currVal));
     }
-    createPokemon(currPokeList)
+
+    createPokemon(currPokeList);
   });
   
-}
-
-// const showCardDetails = (itemId) =>{
-//   const currPokemon = defaultPokeList.filter((item) => item.id == itemId)[0]
-//   cardDetails.innerHTML = `
-//               <div class="main-content-details_id">
-//                  <p>#101</p>
-//               </div>
-  
-//               <div class="main-content-details_img">
-//                 <img src="" alt="">
-//               </div>
-  
-//               <div class="main-content-details_title">
-//                 <h1>Mewto</h1>
-//               </div>
-  
-//               <div class="main-content-details_type">
-//                 <p>Fire</p>
-//               </div>
-  
-//               <div class="main-content-details_weight">
-//                 <p>30kg</p>
-//               </div>
-  
-//               <div class="main-content-details_height">
-//                 <p>1m23</p>
-//               </div>
-              
-//               <div class="main-content-details_ability">
-//                 <p>friend-guard</p>
-//               </div>
-//   `
-
-
-  
-// }
+};
 
 const showCardDetails = async (itemId) => {
   const url = `https://pokeapi.co/api/v2/pokemon/${itemId}/`;
